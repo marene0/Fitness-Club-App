@@ -1,0 +1,17 @@
+<app-header-for-login></app-header-for-login>
+
+<div class="formCont">
+  <form [formGroup]="profileForm" (ngSubmit)="signInFormSumbit()">
+    <label for="username">Username: </label>
+    <input id="username" type="text" formControlName="username" required>
+    <label for="password">Password: </label>
+    <input id="password" type="password" formControlName="password" required minlength="8">
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <p>Complete the form to enable button.</p>
+    <button type="submit" [disabled]="!profileForm.valid || showSpinner">Login</button>
+    <div *ngIf="showSpinner" class="login">
+      <p-progressSpinner [style]="{width: '100px', height: '100px'}" strokeWidth="5" ariaLabel="loading"></p-progressSpinner>
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div class="wrapper">
+  <div class="bodyOfGoals">
+  <form [formGroup]="goalForm">
+    <table class="goal">
+      <tr>
+        <th>Вправа</th>
+        <th>Кількість</th>
+        <th>Дії</th>
+        <th>Статистика</th>
+      </tr>
+      <tr *ngFor="let goal of goals; let i = index" class="exercise">
+        <td>
+          <div class="card flex justify-content-center">
+            <ng-container *ngIf="!goal.showDropdown">
+              {{ goal.description }}
+            </ng-container>
+            <ng-container *ngIf="goal.showDropdown">
+              <p-dropdown [options]="exercises" formControlName="description" optionLabel="name" [showClear]="true" placeholder="Select a Exercise"></p-dropdown>
+            </ng-container>
+          </div>
+        </td>
+        <td>
+          <ng-container *ngIf="goal.showDropdown; else showCount">
+            <input type="number" formControlName="count" placeholder="Кількість">
+          </ng-container>
+          <ng-template #showCount>
+            <span>{{ goal.count }}</span>
+          </ng-template>
+        </td>
+        <td>
+          <button (click)="removeGoal(goal.id)">Видалити</button>
+        </td>
+        <td>
+          <button (click)="showStatistic(goal.id)">Отримати статистику</button>
+        </td>
+      </tr>
+    </table>
+    <div>
+      <button class="add-goal-btn" (click)="addGoalString()">add goal</button>
+      <button class="add-goal-btn" (click)="addGoal()">save goal</button>
+    </div>
+  </form>
+</div>
+  <div class="first">
+    <div class="chart-container">
+      <p-chart type="doughnut" [data]="data"></p-chart>
+    </div>
+  </div>
+</div>

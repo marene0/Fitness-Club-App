@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="exercise-bar">
+    <a href="javascript:void(0)" class="exercise-link" (click)="filterExercisesByBodyType(BodyType.Legs, 0, 3)">Ноги</a>
+    <a href="javascript:void(0)" class="exercise-link" (click)="filterExercisesByBodyType(BodyType.Arms,0,3)">Руки</a>
+    <a href="javascript:void(0)" class="exercise-link" (click)="filterExercisesByBodyType(BodyType.FullBody,0,3)">Все тіло</a>
+    <a href="javascript:void(0)" class="exercise-link" (click)="filterExercisesByBodyType(BodyType.Back,0,3)">Спина</a>
+    <a href="javascript:void(0)" class="exercise-link" (click)="filterExercisesByBodyType(BodyType.Stretching,0,3)">Розтяжка</a>
+    <a href="javascript:void(0)" class="exercise-link" (click)="filterExercisesByBodyType(BodyType.Cardio,0,3)">Кардіо</a>
+  </div>
+  <div *ngIf="isDefined(selectedBodyType)">
+    <table>
+      <thead>
+      <tr>
+        <th>Вправа</th>
+        <th>Спалені калорії</th>
+        <th>Складність</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let exercise of exercises">
+        <td>{{ exercise.name }}</td>
+        <td>{{ exercise.caloriesLost }}</td>
+        <td>{{ getComplexityType(exercise.complexity) }}</td>
+        <td>
+          <button (click)="addExerciseToWorkout(exercise)">Додати вправу</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="card-pagination">
+      <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords" ></p-paginator>
+    </div>
+  </div>
+</div>
+<div class="table-workout">
+  <div class="added-exercises">
+    <label for="workout-name">Назва тренування:</label>
+    <input type="text" id="workout-name" [(ngModel)]="workoutName">
+    <label> Дата тренування:</label>
+    <div class="card flex justify-content-center">
+      <p-calendar [(ngModel)]="date"></p-calendar>
+    </div>
+    <h3>Додані вправи:</h3>
+    <ul>
+      <li *ngFor="let addedExercise of workout">
+        <input type="number" [(ngModel)]="addedExercise.time" placeholder="Час (хв)">
+        <input type="number" [(ngModel)]="addedExercise.countOfExercise" placeholder="Кількість повторень">
+        {{ addedExercise.name }}
+        <button (click)="removeExerciseFromWorkout(workout.indexOf(addedExercise))">Видалити</button>
+      </li>
+    </ul>
+    <button (click)="saveWorkout()">Зберегти тренування</button>
+  </div>
+</div>

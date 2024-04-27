@@ -1,0 +1,25 @@
+<div class="first">
+<div class="container">
+  <div *ngFor="let workout of workouts" class="card">
+    <p-accordion [multiple]="true">
+      <p-accordionTab [header]="workout.name">
+        <div>
+          <p>Exercises:</p>
+          <ul >
+            <li *ngFor="let exerciseWorkout of workout.exercises">
+              <p>Exercise Name: {{ exerciseWorkout.name }}</p>
+              <p>Type: {{getBogyType(exerciseWorkout.type) }}</p>
+              <p>Calories Lost: {{ exerciseWorkout.caloriesLost }}</p>
+              <p>Complexity: {{ getComplexityType(exerciseWorkout.complexity) }}</p>
+              <p>Time: {{ exerciseWorkout.time }}</p>
+              <p>Count Of Exercise: {{ exerciseWorkout.countOfExercise }}</p>
+            </li>
+          </ul>
+          <button class="button remove" (click)="removeWorkout(workout.id)">Remove</button>
+          <button class="button" (click)="doneWorkout(workout.id)">Done</button>
+        </div>
+      </p-accordionTab>
+    </p-accordion>
+  </div>
+</div>
+</div>

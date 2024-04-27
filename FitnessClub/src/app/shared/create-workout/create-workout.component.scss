@@ -1,0 +1,27 @@
+.create-workout {
+    text-align: center;
+    background-color: rgb(77, 79, 80);
+    color: white;
+    padding-bottom: 200px;
+    overflow: hidden;
+}
+
+.create-workout a {
+    display: inline-block;
+    margin-top: 20px;
+    width: 200px;
+    height: 50px;
+    background-color: #c9138c;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-style: initial;
+    line-height: 50px;
+    border-radius: 20px;
+}
+
+.create-workout a:hover {
+    background-color: #110e10;
+    color: #c9138c;
+}

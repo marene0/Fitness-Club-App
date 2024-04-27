@@ -1,0 +1,61 @@
+<app-header></app-header>
+<div class="real-create-workout">
+  <form [formGroup]="exerciseForm">
+    <table class="exercise">
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Complexity</th>
+        <th>Calories lost</th>
+      </tr>
+<tr *ngFor="let exercise of exercises; let i = index" class="exercise" [formGroup]="exerciseForm">
+  <td>
+    <div class="card flex justify-content-center">
+      <ng-container *ngIf="!exercise.showDropdown; else showInputs">
+        {{ exercise.name }}
+      </ng-container>
+      <ng-template #showInputs>
+        <input type="text" [(ngModel)]="exercise.name" formControlName="name" placeholder="Enter name">
+      </ng-template>
+    </div>
+  </td>
+  <td>
+    <ng-container *ngIf="exercise.showDropdown; else showCount">
+      <p-dropdown [options]="getBodyTypeOptions()" formControlName="type" [showClear]="true" placeholder="Select a type"></p-dropdown>
+    </ng-container>
+    <ng-template #showCount>
+      <span>{{ getBogyTypeString(exercise.type) }}</span>
+    </ng-template>
+  </td>
+  <td>
+    <ng-container *ngIf="exercise.showDropdown; else showComplexity">
+      <p-dropdown [options]="getComplexityTypeOptions()" formControlName="complexity" [showClear]="true" placeholder="complexity"></p-dropdown>
+    </ng-container>
+    <ng-template #showComplexity>
+      <span>{{ getComplexityTypeString(exercise.complexity) }}</span>
+    </ng-template>
+  </td>
+  <td>
+    <ng-container *ngIf="exercise.showDropdown; else showCaloriesInput">
+      <input type="number" formControlName="caloriesLost" placeholder="Enter calories lost">
+    </ng-container>
+    <ng-template #showCaloriesInput>
+      <span>{{ exercise.caloriesLost }}</span>
+    </ng-template>
+  </td>
+  <td>
+    <button (click)="removeExercise(exercise.id)">Remove</button>
+  </td>
+  <td>
+    <button *ngIf="exercise.showDropdown" (click)="saveExercise()">Save exercise</button>
+  </td>
+</tr>
+    </table>
+    <div class="card-pagination">
+      <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords" ></p-paginator>
+    </div>
+    <div>
+      <button class="add-goal-btn" (click)="addExercise()">add exercise</button>
+    </div>
+  </form>
+</div>

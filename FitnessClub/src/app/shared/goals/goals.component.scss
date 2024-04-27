@@ -1,0 +1,99 @@
+.wrapper {
+  display: flex;
+  background-color: rgb(77, 79, 80);
+  padding-left: 300px;
+  padding-top: 30px;
+  padding-bottom: 200px;
+}
+
+.bodyOfGoals {
+  padding-top: 50px ;
+  padding-bottom: 10px;
+  background-color: rgb(77, 79, 80);
+  margin-right: 20px;
+  color: rgb(255, 255, 255);
+  font-family: Arial, sans-serif;
+  font-style: initial;
+  background-color: rgb(66, 67, 68);
+  border: 1px solid #2c2c2c;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.bodyOfGoals .goal td:nth-of-type(1) {
+  width: 143px;
+}
+
+.bodyOfGoals .goal td:nth-of-type(2) {
+  width: 57px;
+  text-align: center;
+}
+
+.bodyOfGoals .goal td:nth-of-type(3) {
+  width: 57px;
+  text-align: center;
+}
+
+.bodyOfGoals .goal th,
+.bodyOfGoals .goal td {
+  padding: 8px;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.bodyOfGoals .goal td:hover {
+  background-color: rgb(52, 53, 54);
+}
+
+.bodyOfGoals .goal th {
+  background-color: rgb(66, 67, 68);
+}
+
+.bodyOfGoals .goal td select,
+.bodyOfGoals .goal td input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #2c2c2c;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.bodyOfGoals .goal td button {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.bodyOfGoals .goal td button:hover {
+  background-color: #c82333;
+}
+
+.bodyOfGoals .add-goal-btn {
+  background-color:  #4CAF50;
+  color: white;
+  padding: 8px 12px 5px 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  margin-left: 25px;
+}
+
+.bodyOfGoals .add-goal-btn:hover {
+  background-color: #45a049;
+}
+
+.first {
+  background-color: rgb(77, 79, 80);
+}
+
+.first .chart-container {
+  width: 300px;
+  height: 300px;
+  background-color: rgb(77, 79, 80);
+}

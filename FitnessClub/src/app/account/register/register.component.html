@@ -1,0 +1,18 @@
+<app-header-for-login></app-header-for-login>
+
+<div class="formCont">
+  <form [formGroup]="profileForm">
+    <label for="first-name">First Name: </label>
+    <input id="first-name" type="text" formControlName="firstName" required>
+    <label for="last-name">Last Name: </label>
+    <input id="last-name" type="text" formControlName="lastName" required>
+    <label for="email">Email: </label>
+    <input id="email" type="text" formControlName="email" required>
+    <label for="password">Password: </label>
+    <input id="password" type="text" formControlName="password" required minlength="8">
+    <p *ngIf="accountCreated">Check your email</p>
+    <p>Complete the form to enable button.</p>
+    <button type="submit" [disabled]="accountCreated" (click)="onSubmit()">Create account</button>
+  </form>
+</div>
+

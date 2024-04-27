@@ -1,0 +1,14 @@
+.card {
+  height: 400px;
+  background-color: rgb(77, 79, 80);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.carousel-item-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
