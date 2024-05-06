@@ -3,19 +3,18 @@ export interface Exercise {
   name: string;
 }
 
-export  interface GoalModel {
+export interface GoalModel {
   id: string;
   description: string;
   count: number;
   exerciseId: string;
-  userId: string ;
+  userId: string;
   showDropdown?: boolean;
 }
 
-export  interface GetGoalModel {
-  Description: string ;
-  Count: number;
-  ExerciseId: string;
+export interface GetGoalModel {
+  description: string;
+  count: number;
+  exerciseId: string;
   showDropdown?: boolean;
-
 }
